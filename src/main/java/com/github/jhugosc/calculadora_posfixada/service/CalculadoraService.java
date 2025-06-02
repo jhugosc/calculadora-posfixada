@@ -1,8 +1,13 @@
 package com.github.jhugosc.calculadora_posfixada.service;
 
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+
 import com.github.jhugosc.calculadora_posfixada.model.FilaDinamica;
 import com.github.jhugosc.calculadora_posfixada.model.Pilha;
 
+@Service
 public class CalculadoraService {
 
     public double calcularExpressao(String expressao) {
@@ -49,9 +54,12 @@ public class CalculadoraService {
         }
     }
 
+    private static final Set<String> OPERADORES = Set.of("+", "-", "*", "/", "%");
+
     private boolean ehOperador(String caracter) {
-        return "+-*/%".contains(caracter) && caracter.length() == 1;
+    return OPERADORES.contains(caracter);
     }
+
 
     private double operacaoCalculo(double n1, double n2, String operador) {
         double resultado;
