@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/calculadora")
-@CrossOrigin(origins = "*")
 public class CalculadoraController {
 
     private final CalculadoraService calculadoraService;
