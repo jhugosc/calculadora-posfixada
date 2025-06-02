@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora Pós-Ordem</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Pós-Ordem</h1>
+
+        <div class="display-area">
+            <div id="expressionDisplay" class="expression-display">Digite números e operadores</div>
+            <div id="display" class="display">0</div>
+        </div>
+
+        <div class="buttons">
+            <div class="input-buttons">
+                <button onclick="inputNumber('7')">7</button>
+                <button onclick="inputNumber('8')">8</button>
+                <button onclick="inputNumber('9')">9</button>
+                <button onclick="addOperator('+')">+</button>
+
+                <button onclick="inputNumber('4')">4</button>
+                <button onclick="inputNumber('5')">5</button>
+                <button onclick="inputNumber('6')">6</button>
+                <button onclick="addOperator('-')">-</button>
+
+                <button onclick="inputNumber('1')">1</button>
+                <button onclick="inputNumber('2')">2</button>
+                <button onclick="inputNumber('3')">3</button>
+                <button onclick="addOperator('*')">*</button>
+
+                <button onclick="inputDecimal()">.</button>
+                <button onclick="inputNumber('0')">0</button>
+                <button onclick="enterNumber()">Enter</button>
+                <button onclick="addOperator('/')">/</button>                
+            </div>
+
+            <div class="control-buttons">
+                <button onclick="backspace()">Apagar</button>
+                <button onclick="clearAll()">Limpar</button>
+                <button onclick="calcular()">Calcular</button>
+                <button onclick="toggleSign()">+/-</button>
+                <button onclick="addOperator('%')">%</button>
+
+            </div>
+        </div>
+
+        <div class="stack-area">
+            <h3>Pilha</h3>
+            <div id="stackContainer" class="stack-container">
+                <div id="stackEmpty" class="stack-empty">A pilha está vazia.</div>
+            </div>
+        </div>
+
+        <div id="messageBox" class="message-box hidden"></div>
+
+        <div id="historyCard" class="history-card" style="display:none;">
+            <h3>Histórico</h3>
+            <div id="historyContainer" class="history-container"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

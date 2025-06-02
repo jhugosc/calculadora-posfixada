@@ -26,7 +26,7 @@ public class CalculadoraService {
                 pilha.empilhar(Double.parseDouble(caracter));
             } else if (ehOperador(caracter)) {
                 if (pilha.tamanho() < 2) {
-                    throw new IllegalArgumentException("Expressão malformada: operandos insuficientes.");
+                    throw new IllegalArgumentException("Expressão malformada: Operandos insuficientes.");
                 }
 
                 double n2 = pilha.desempilhar();
@@ -39,7 +39,7 @@ public class CalculadoraService {
         }
 
         if (pilha.tamanho() != 1) {
-            throw new IllegalArgumentException("Expressão malformada: operandos ou operadores em excesso.");
+            throw new IllegalArgumentException("Expressão malformada: Operandos ou operadores em excesso.");
         }
 
         return pilha.desempilhar();
