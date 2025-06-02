@@ -89,13 +89,21 @@ function enterNumber() {
 }
 
 function addOperator(operator) {
-    if (expression.length > 0 && typeof expression[expression.length - 1] !== 'string') {
-        expression.push(operator);
-        addToHistory(`Operador: ${operator}`);
-        updateStack();
-        updateExpression();
+    if (currentInput) {
+        enterNumber();
     }
+
+    if (expression.length === 0) {
+        showMessage('Não é possível iniciar a expressão com um operador!', 'error');
+        return;
+    }
+
+    expression.push(operator);
+    addToHistory(`Operador: ${operator}`);
+    updateStack();
+    updateExpression();
 }
+
 
 function clearAll() {
     expression = [];
