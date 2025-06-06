@@ -12,47 +12,49 @@ public class CalculadoraService {
 
     // Método principal que realiza o cálculo da expressão pós-fixada
     public double calcularExpressao(String expressao) {
-        FilaDinamica<String> fila = new FilaDinamica<>(); // Fila para armazenar a expressão
-        Pilha<Double> pilha = new Pilha<>(); // Pilha para realizar os cálculos
+        FilaDinamica<String> fila = new FilaDinamica<>();
+        Pilha<Double> pilha = new Pilha<>();
 
-        // Divide a expressão por espaços e adiciona cada elemento na fila
+        // Divide a expressão por espaços
         String[] caracters = expressao.trim().split("\\s+");
-        for (int i = 0; i < caracters.length; i++) {
-            fila.enfileirar(caracters[i]);
+
+        // Garante que há pelo menos dois operandos e um operador
+        if (caracters.length < 3) {
+            throw new IllegalArgumentException("Expressão malformada: deve conter ao menos dois operandos e um operador.");
         }
 
-        // Processa a fila até que ela esteja vazia
+        // Enfileira os elementos da expressão
+        for (String c : caracters) {
+            fila.enfileirar(c);
+        }
+
+        // Processa a fila
         while (!fila.estaVazia()) {
             String caracter = fila.desenfileirar();
 
             if (ehNumero(caracter)) {
-                // Se for número, empilha
                 pilha.empilhar(Double.parseDouble(caracter));
             } else if (ehOperador(caracter)) {
-                // Se for operador, verifica se há pelo menos dois operandos na pilha
                 if (pilha.tamanho() < 2) {
-                    throw new IllegalArgumentException("Expressão malformada: Operandos insuficientes.");
+                    throw new IllegalArgumentException("Faltam operandos para o operador '" + caracter + "'.");
                 }
 
-                // Desempilha dois valores para operar
                 double n2 = pilha.desempilhar();
                 double n1 = pilha.desempilhar();
 
-                // Realiza a operação e empilha o resultado
                 double resultado = operacaoCalculo(n1, n2, caracter);
                 pilha.empilhar(resultado);
             } else {
-                // Caso encontre um caracter inválido
-                throw new IllegalArgumentException("Caracter inválido: " + caracter);
+                throw new IllegalArgumentException("Operador inválido: '" + caracter + "'");
             }
         }
 
-        // Ao final, deve restar exatamente um valor na pilha (o resultado)
+        // Ao final deve restar apenas um valor na pilha
         if (pilha.tamanho() != 1) {
-            throw new IllegalArgumentException("Expressão malformada: Operandos ou operadores em excesso.");
+            throw new IllegalArgumentException("Expressão malformada: operandos ou operadores em excesso.");
         }
 
-        return pilha.desempilhar(); // Retorna o resultado final
+        return pilha.desempilhar();
     }
 
     // Verifica se o valor é um número
