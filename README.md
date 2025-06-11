@@ -83,4 +83,14 @@ A calculadora possui botões com funcionalidades específicas para facilitar a m
 
 ---
 
+## 👥 Colaboradores
+
+- [@jhugosc](https://github.com/jhugosc)
+- [@diogomnx](https://github.com/diogomnx)
+- [@Samuelito1111](https://github.com/Samuelito1111)
+- [@gabirucosta2140](https://github.com/gabirucosta2140)
+- [@davimnds](https://github.com/davimnds)
+
+---
+
 Acesse para ver um vídeo de funcionamento: [https://youtu.be/bBbMomiyZkc](https://youtu.be/bBbMomiyZkc)
